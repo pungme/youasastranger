@@ -1,0 +1,56 @@
+<!--<video id="video" autoplay></video>-->
+<video id="video" width="100%" height="100%" autoplay></video>
+
+<!--
+<div id= "" class="btn-toolbar" role="toolbar">
+    <button type="button" class="btn btn-default btn-lg" id="snap-btn">
+      <span class="glyphicon glyphicon-camera"></span>
+    </button>
+
+    <button type="button" class="btn btn-default btn-lg" >
+      <span class="glyphicon glyphicon-star"> Again</span>
+    </button>
+
+    <button type="button" class="btn btn-default btn-lg"  ng-click="saveImage()">
+      <span class="glyphicon glyphicon-circle-arrow-right"> Save</span>
+    </button>
+    
+</div>
+-->
+
+<form id="email-main" class="form-inline" role="form" ng-submit="saveEmail()">
+  <div class="form-group">
+    <label class="sr-only" for="exampleInputEmail2">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter email" ng-model="useremail">
+  </div>
+  <button type="submit" class="btn btn-default">Continue</button>
+</form>
+
+<!--
+<div class="input-group">
+  <span class="input-group-addon">@</span>
+  <input type="text" class="form-control" placeholder="Username">
+</div>
+-->
+    <h1 id="please-allow-camera"> 
+        <span class="glyphicon glyphicon-arrow-up"></span>
+        Click the "Allow" button to enable your camera :) 
+        <span class="glyphicon glyphicon-arrow-up"></span>
+    </h1>
+
+    <div id="camera-menu" class="btn-toolbar" role="toolbar">
+      <button id="snap-btn" type="button" class="btn btn-default btn-lg">
+          <span class="glyphicon glyphicon-camera"></span> 
+        </button>
+      <button id="retake-btn" type="button" class="btn btn-default btn-lg">
+          <span class="glyphicon glyphicon-repeat"></span> Retake
+        </button>
+<!--      <button id="save-btn" type="button" class="btn btn-default btn-lg" ng-click="saveImage()">-->
+      <button id="save-btn" type="button" class="btn btn-default btn-lg" ng-click="saveImage()" onClick="parent.location='#speech'">
+          <span class="glyphicon glyphicon-ok"></span> OK!
+        </button>
+    </div>
+
+<!--<button ng-click="saveImage()">Save</button>-->
+<canvas id="canvas" width="640" height="480"></canvas>
+
