@@ -48,7 +48,7 @@ function startMic(){
     mainsvg = d3.select("#circle")
         .append("svg:circle")
 		.attr("cx", (window.innerWidth-120))
-		.attr("cy", (window.innerHeight-150))
+		.attr("cy", (window.innerHeight-120))
 		.attr("r", radius)
         //.style("fill", "#dd4601"); 
         .style("fill", "#D47F24");

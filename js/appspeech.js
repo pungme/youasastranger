@@ -72,7 +72,7 @@ if (!('webkitSpeechRecognition' in window)) {
     }
     
    // console.log(final_transcript);
-    if(final_transcript.length>400 || interim_transcript.length >400 ){
+    if(final_transcript.length>20 || interim_transcript.length >20 ){ //TODO change to 400 
         recognition.stop();
     }
 //    console.log(interim_transcript);

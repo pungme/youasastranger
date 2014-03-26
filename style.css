@@ -69,7 +69,7 @@ svg { top:0; bottom:0; left:0; right:0 }
     z-index: 5;
     font-size: 30px;
     font-weight: bold;
-    border: 1px dotted #ddd;
+/*    border: 1px dotted #ddd;*/
     /* padding: 15px; */
     text-align: center;
     /* min-height: 150px; */
@@ -155,3 +155,9 @@ svg { top:0; bottom:0; left:0; right:0 }
     top : 30px;
     left : 10%;
 }
+
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+

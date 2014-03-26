@@ -1,24 +1,32 @@
 //AngularJS stuff
 
 var codeArtApp = angular.module("codeArtApp",['ngRoute']);
+var userID = 0;
 
 codeArtApp.controller("speechController", function($scope,$http) {
     //$scope.isStartMic = false;
     
     startMic();
     startSpeechRegcog();
-    
+    if(userID = 0){
+        console.log("You are a stranger");
+    }
     $scope.strangerData;
     $scope.strangerImgName = ""; 
     $scope.strangerId;
     $scope.strangerEmail;
     $scope.numsent;
-    
     $scope.final_transcript = "";
     
-    $http({method: 'GET', url: 'php/getstranger.php'}).
+    $http({
+        method: 'POST', 
+        url: 'php/getstranger.php',
+        data : { 
+            userId : userID
+        }
+      }).
       success(function(data, status, headers, config) {
-          console.log(data);
+         // console.log(data);
           //$scope.data = data;
           $scope.strangerData = data[0];
           $scope.strangerImgName = data[0].imgpath;
@@ -37,7 +45,9 @@ codeArtApp.controller("speechController", function($scope,$http) {
             data : { 
                 //id seems to have somthing wrong
                 strangerMail : $scope.strangerEmail,
-                text : transcript
+                strangerId : $scope.strangerId,
+                text : transcript,
+                numsent : parseInt($scope.numsent) + 1
             }
         }).
         success(function(data, status, headers, config) {
@@ -58,6 +68,7 @@ codeArtApp.controller("cameraController", function($scope,$http,$location) {
     
     $scope.imgsrc = "";
     $scope.useremail;
+    $scope.userId;
     $scope.saveImage = function(){
         $scope.imgsrc = convertCanvasToImage(cameraCanvas);
         var imgsrc = $scope.imgsrc.split("data:image/png;base64,")[1];
@@ -66,20 +77,6 @@ codeArtApp.controller("cameraController", function($scope,$http,$location) {
     }
     
     $scope.saveEmail = function(email){
-//        if($scope.useremail){
-//            $http({
-//                method: 'POST', 
-//                url: 'php/addemail.php',
-//                data : { 
-//                    email : $scope.useremail 
-//                }
-//            }).
-//            success(function(data, status, headers, config) {
-//            }).
-//            error(function(data, status, headers, config) {
-//                console.log("AJAX Error.");
-//            });
-//        }
         $("#snap-btn").css({"display":"inline-block"});
         $("#email-main").css({"display":"none"});
     }
@@ -96,6 +93,8 @@ codeArtApp.controller("cameraController", function($scope,$http,$location) {
             }
         }).
         success(function(data, status, headers, config) {
+            userID = data;
+            //$scope.userId;
            // $scope.$apply( $location.path("speech"));
             //TODO: after success, go to another url
         }).
@@ -107,7 +106,11 @@ codeArtApp.controller("cameraController", function($scope,$http,$location) {
 
 codeArtApp.config(function($routeProvider, $locationProvider) {
   $routeProvider
-   .when('/', {
+  .when('/', {
+    templateUrl: 'partials/first.html'
+    //controller: 'cameraController'
+  })
+  .when('/camera', {
     templateUrl: 'partials/camera.html',
     controller: 'cameraController'
   })
