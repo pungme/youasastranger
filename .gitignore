@@ -1,2 +1,6 @@
 PHPMailer/
+<<<<<<< HEAD
 php/sendmail.php
+=======
+php/
+>>>>>>> FETCH_HEAD
