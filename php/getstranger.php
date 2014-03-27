@@ -6,7 +6,7 @@
     $data = json_decode(file_get_contents("php://input"));
     $userID = $data->userId;
 
-    $query = "SELECT * FROM strangers WHERE approved = '1' ORDER BY numsent Limit 1;";
+    $query = "SELECT id, email, imgpath, numsent FROM strangers WHERE approved = '1' ORDER BY numsent Limit 1;"; // do not select email ! 
     $result = mysql_query($query);
     $nbrows = mysql_num_rows($result);	
     if($nbrows>0){

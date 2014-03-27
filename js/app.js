@@ -14,7 +14,7 @@ codeArtApp.controller("speechController", function($scope,$http) {
     $scope.strangerData;
     $scope.strangerImgName = ""; 
     $scope.strangerId;
-    $scope.strangerEmail;
+    //$scope.strangerEmail;
     $scope.numsent;
     $scope.final_transcript = "";
     
@@ -32,7 +32,7 @@ codeArtApp.controller("speechController", function($scope,$http) {
           $scope.strangerImgName = data[0].imgpath;
           $scope.strangerId = data[0].id;
           $scope.numsent = data[0].numsent; 
-          $scope.strangerEmail = data[0].email;
+          //$scope.strangerEmail = data[0].email;
       }).
       error(function(data, status, headers, config) {
           console.log("AJAX Error.");
@@ -43,8 +43,7 @@ codeArtApp.controller("speechController", function($scope,$http) {
             method: 'POST', 
             url: 'php/sendmail.php',
             data : { 
-                //id seems to have somthing wrong
-                strangerMail : $scope.strangerEmail,
+               // strangerMail : $scope.strangerEmail,
                 strangerId : $scope.strangerId,
                 text : transcript,
                 numsent : parseInt($scope.numsent) + 1
