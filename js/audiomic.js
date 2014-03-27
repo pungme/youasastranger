@@ -2,13 +2,6 @@
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
 var radius = 80;
 var mainsvg;
-//var mainsvg = d3.select("#circle")
-//        .append("svg:circle")
-//		.attr("cx", (window.innerWidth/2))
-//		.attr("cy", (window.innerHeight/2))
-//		.attr("r", radius)
-//        //.style("fill", "#dd4601"); 
-//        .style("fill", "#D47F24");
 
 //success callback when requesting audio input stream
 var audioContext = new AudioContext();
