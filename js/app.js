@@ -4,7 +4,6 @@ var codeArtApp = angular.module("codeArtApp",['ngRoute']);
 var userID = 0;
 
 codeArtApp.controller("speechController", function($scope,$http) {
-    //$scope.isStartMic = false;
     
     startMic();
     startSpeechRegcog();
@@ -14,7 +13,6 @@ codeArtApp.controller("speechController", function($scope,$http) {
     $scope.strangerData;
     $scope.strangerImgName = ""; 
     $scope.strangerId;
-    //$scope.strangerEmail;
     $scope.numsent;
     $scope.final_transcript = "";
     
@@ -26,13 +24,10 @@ codeArtApp.controller("speechController", function($scope,$http) {
         }
       }).
       success(function(data, status, headers, config) {
-         // console.log(data);
-          //$scope.data = data;
           $scope.strangerData = data[0];
           $scope.strangerImgName = data[0].imgpath;
           $scope.strangerId = data[0].id;
           $scope.numsent = data[0].numsent; 
-          //$scope.strangerEmail = data[0].email;
       }).
       error(function(data, status, headers, config) {
           console.log("AJAX Error.");
@@ -43,7 +38,6 @@ codeArtApp.controller("speechController", function($scope,$http) {
             method: 'POST', 
             url: 'php/sendmail.php',
             data : { 
-               // strangerMail : $scope.strangerEmail,
                 strangerId : $scope.strangerId,
                 text : transcript,
                 numsent : parseInt($scope.numsent) + 1
@@ -51,7 +45,6 @@ codeArtApp.controller("speechController", function($scope,$http) {
         }).
         success(function(data, status, headers, config) {
              $("#mymodal").modal("show")
-             //update + 1 to numsent
         }).
         error(function(data, status, headers, config) {
               console.log("AJAX Error.");
@@ -79,23 +72,18 @@ codeArtApp.controller("cameraController", function($scope,$http,$location) {
         $("#snap-btn").css({"display":"inline-block"});
         $("#email-main").css({"display":"none"});
     }
-   // $scope.currentPitch = 0;
     
     $scope.uploadImage = function(imgsrc){
         $http({
             method: 'POST', 
             url: 'php/uploadimg.php',
             data : { 
-                //id seems to have somthing wrong
                 base64data : imgsrc,
                 email : $scope.useremail
             }
         }).
         success(function(data, status, headers, config) {
             userID = data;
-            //$scope.userId;
-           // $scope.$apply( $location.path("speech"));
-            //TODO: after success, go to another url
         }).
         error(function(data, status, headers, config) {
               console.log("AJAX Error.");
@@ -107,7 +95,6 @@ codeArtApp.config(function($routeProvider, $locationProvider) {
   $routeProvider
   .when('/', {
     templateUrl: 'partials/first.html'
-    //controller: 'cameraController'
   })
   .when('/camera', {
     templateUrl: 'partials/camera.html',
