@@ -64,7 +64,6 @@ codeArtApp.controller("cameraController", function($scope,$http,$location) {
     $scope.saveImage = function(){
         $scope.imgsrc = convertCanvasToImage(cameraCanvas);
         var imgsrc = $scope.imgsrc.split("data:image/png;base64,")[1];
-        //console.log(imgsrc);
         $scope.uploadImage(imgsrc);
     }
     

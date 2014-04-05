@@ -50,15 +50,6 @@ if (!('webkitSpeechRecognition' in window)) {
     showInfo('');
       console.log("sending data to server..");
       angular.element(document.getElementById('info')).scope().sendEmail(final_transcript);
-      //modal
-      //angular
-//      $("#mymodal").modal("show")
-//    if (window.getSelection) {
-//      window.getSelection().removeAllRanges();
-//      var range = document.createRange();
-//      range.selectNode(document.getElementById('final_span'));
-//      window.getSelection().addRange(range);
-//    }
   };
 
   recognition.onresult = function(event) {
